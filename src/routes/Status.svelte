@@ -7,13 +7,18 @@
 	let textColor = 'green';
 
 	$: if (current < warning) {
-		textColor = 'green';
+		textColor = '#c8f56e';
 	} else if (current >= warning && current < danger) {
-		textColor = 'orange';
+		textColor = '#f5c86e';
 	} else {
-		textColor = 'red';
+		textColor = '#ff4259';
 	}
 </script>
 
-<span style="color: {textColor}">{current}</span>
-{unit}
+<h3 style="color: {textColor}">{current} {unit}</h3>
+
+<style>
+	h3 {
+		margin: 0;
+	}
+</style>
