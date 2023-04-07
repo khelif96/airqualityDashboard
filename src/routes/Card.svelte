@@ -24,9 +24,10 @@
 		text-align: left;
 		font-size: 37px;
 		transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1);
+		user-select: none;
 	}
 	.card:hover {
-		cursor: pointer;
+		/* cursor: pointer; */
 		background-color: hsla(0, 0%, 9%, 0.8);
 		transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 	}

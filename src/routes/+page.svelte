@@ -30,9 +30,7 @@
 		<Card {hasData} title="CO2" current={co2} warning={2000} danger={3000} unit="PPM" />
 	</div>
 
-	<div class="metadata">
-		<Metadata {time} {date} handleClick={fetchData} />
-	</div>
+	<Metadata {time} {date} handleClick={fetchData} />
 </main>
 
 <style>

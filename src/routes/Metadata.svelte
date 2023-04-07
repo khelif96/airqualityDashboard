@@ -17,11 +17,13 @@
 		display: flex;
 		align-items: center;
 		gap: 8px;
+		font-weight: 100;
 	}
 	p {
-		cursor: pointer;
+		user-select: none;
 	}
 	.refresh {
+		cursor: pointer;
 		line-height: 0;
 		font-size: 24px;
 	}
