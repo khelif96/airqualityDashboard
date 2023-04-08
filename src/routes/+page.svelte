@@ -1,7 +1,8 @@
 <script>
+	import { onMount } from 'svelte';
 	import Card from './Card.svelte';
 	import Metadata from './Metadata.svelte';
-	import Status from './Status.svelte';
+
 	let hasData = false;
 	let time = '';
 	let date = '';
@@ -21,7 +22,7 @@
 		date = jsonDate.toLocaleDateString();
 	};
 
-	fetchData();
+	onMount(fetchData);
 </script>
 
 <main>
