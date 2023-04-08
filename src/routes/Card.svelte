@@ -8,7 +8,6 @@
 	export let warning = 50;
 	export let danger = 75;
 	export let unit = '';
-	console.log({ current, past, title });
 </script>
 
 <div class="card">

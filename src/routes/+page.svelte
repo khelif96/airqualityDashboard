@@ -30,6 +30,8 @@
 		}
 	};
 
+	setInterval(fetchAllData, 1000 * 60 * 1);
+
 	onMount(fetchAllData);
 </script>
 
