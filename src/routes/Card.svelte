@@ -21,6 +21,7 @@
 	on:keydown={handleClick}
 	role="button"
 	tabindex="0"
+	title="Click to expand"
 >
 	{#if hasData}
 		<div>

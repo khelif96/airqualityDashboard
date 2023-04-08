@@ -6,7 +6,7 @@
 
 <div>
 	<p>Last Update: {time} on {date}</p>
-	<p class="refresh" on:keydown={handleClick} on:click={handleClick}>⟳</p>
+	<p title="Refresh" class="refresh" on:keydown={handleClick} on:click={handleClick}>⟳</p>
 </div>
 
 <style>
