@@ -37,6 +37,7 @@
 
 <main>
 	<div>
+		<h1>Air Quality</h1>
 		<Card
 			{hasData}
 			title="TVOC"
@@ -70,5 +71,8 @@
 		flex-direction: column;
 		justify-content: space-between;
 		height: 100vh;
+	}
+	h1 {
+		color: #fff;
 	}
 </style>
