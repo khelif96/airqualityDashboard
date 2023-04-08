@@ -8,9 +8,20 @@
 	export let warning = 50;
 	export let danger = 75;
 	export let unit = '';
+
+	$: expanded = false;
+	function handleClick() {
+		expanded = !expanded;
+	}
 </script>
 
-<div class="card">
+<div
+	class={expanded ? 'card expanded' : 'card'}
+	on:click={handleClick}
+	on:keydown={handleClick}
+	role="button"
+	tabindex="0"
+>
 	{#if hasData}
 		<div>
 			<h2>{title}</h2>
@@ -33,11 +44,17 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		cursor: pointer;
 	}
 	.card:hover {
 		/* cursor: pointer; */
 		background-color: hsla(0, 0%, 9%, 0.8);
 		transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.expanded {
+		transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+		height: 50vh;
 	}
 	h2 {
 		color: #fff;
