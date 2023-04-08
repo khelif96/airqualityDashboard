@@ -2,38 +2,60 @@
 	import { onMount } from 'svelte';
 	import Card from './Card.svelte';
 	import Metadata from './Metadata.svelte';
-
+	import { fetchData } from '../api/data';
+	import { currentDataURL, pastDataURL } from '../constants';
 	let hasData = false;
 	let time = '';
 	let date = '';
 	let co2 = 0;
 	let tvoc = 0;
-	export const prerender = true;
+	let pastCo2 = 0;
+	let pastTvoc = 0;
 	export const ssr = false;
-	const fetchData = async () => {
-		hasData = false;
-		const response = await fetch(
-			'https://data.mongodb-api.com/app/roomstats-aptyc/endpoint/getLatest'
-		);
-		const jsonData = await response.json();
-		hasData = true;
-		co2 = parseInt(jsonData[0]['CO2'], 10);
-		tvoc = parseInt(jsonData[0]['TVOC'], 10);
-		const jsonDate = new Date(jsonData[0]['time']);
-		time = jsonDate.toLocaleTimeString();
-		date = jsonDate.toLocaleDateString();
+
+	const fetchAllData = async () => {
+		let currentData = await fetchData(currentDataURL);
+		if (currentData) {
+			hasData = true;
+			time = currentData.time;
+			date = currentData.date;
+			co2 = currentData.co2;
+			tvoc = currentData.tvoc;
+		}
+		let pastData = await fetchData(pastDataURL);
+		if (pastData) {
+			hasData = true;
+			pastCo2 = pastData.co2;
+			pastTvoc = pastData.tvoc;
+		}
 	};
 
-	onMount(fetchData);
+	onMount(fetchAllData);
 </script>
 
 <main>
 	<div>
-		<Card {hasData} title="TVOC" current={tvoc} warning={5000} danger={10000} unit="PPB" />
-		<Card {hasData} title="CO2" current={co2} warning={2000} danger={3000} unit="PPM" />
+		<Card
+			{hasData}
+			title="TVOC"
+			past={pastTvoc}
+			current={tvoc}
+			warning={5000}
+			danger={10000}
+			unit="PPB"
+		/>
+		<Card
+			{hasData}
+			title="CO2"
+			past={pastCo2}
+			current={co2}
+			warning={2000}
+			danger={3000}
+			unit="PPM"
+		/>
 	</div>
 
-	<Metadata {time} {date} handleClick={fetchData} />
+	<Metadata {time} {date} handleClick={fetchAllData} />
 </main>
 
 <style>

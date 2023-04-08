@@ -7,15 +7,15 @@
 	let textColor = 'green';
 
 	$: if (current < warning) {
-		textColor = '#c8f56e';
+		textColor = '--color-safe';
 	} else if (current >= warning && current < danger) {
-		textColor = '#f5c86e';
+		textColor = '--color-warning';
 	} else {
-		textColor = '#ff4259';
+		textColor = '--color-danger';
 	}
 </script>
 
-<h3 style="color: {textColor}">{current} {unit}</h3>
+<h3 style="color: var({textColor})">{current} {unit}</h3>
 
 <style>
 	h3 {

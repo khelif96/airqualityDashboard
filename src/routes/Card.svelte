@@ -1,17 +1,23 @@
 <script>
+	import Arrow from '../Components/Arrow.svelte';
 	import Status from './Status.svelte';
 	export let hasData = false;
 	export let title = '';
 	export let current = 0;
+	export let past = 0;
 	export let warning = 50;
 	export let danger = 75;
 	export let unit = '';
+	console.log({ current, past, title });
 </script>
 
 <div class="card">
 	{#if hasData}
-		<h2>{title}</h2>
-		<Status {current} {warning} {danger} {unit} />
+		<div>
+			<h2>{title}</h2>
+			<Status {current} {warning} {danger} {unit} />
+		</div>
+		<Arrow {current} {past} {unit} />
 	{/if}
 	{#if !hasData}
 		<h2>Loading...</h2>
@@ -25,6 +31,9 @@
 		font-size: 37px;
 		transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1);
 		user-select: none;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 	.card:hover {
 		/* cursor: pointer; */
