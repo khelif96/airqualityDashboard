@@ -8,6 +8,8 @@
 	let date = '';
 	let co2 = 0;
 	let tvoc = 0;
+	export const prerender = true;
+	export const ssr = false;
 	const fetchData = async () => {
 		hasData = false;
 		const response = await fetch(
