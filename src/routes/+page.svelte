@@ -37,7 +37,7 @@
 
 <main>
 	<div>
-		<h1>Air Quality</h1>
+		<h1>Mohamed's Room Air Quality</h1>
 		<Card
 			{hasData}
 			title="TVOC"
